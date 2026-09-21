@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mandira Kalinga Dōna — 3D Portfolio | Software Engineer & MSc Data Science</title>
+  <meta name="description" content="Portfolio of Mandira Kalinga Dōna. BSc (Hons) in Computer Science (2:1 Honours) & MSc Data Science Scholar at UWE Bristol. Full-Stack Software Engineer.">
+  <meta name="author" content="Mandira Kalinga Dōna">
+  <meta name="theme-color" content="#F8FAFC">
+
+  <!-- Minimal Monogram Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%236366F1%22/><text x=%2250%25%22 y=%2255%25%22 font-family=%22system-ui%22 font-weight=%22900%22 font-size=%2252%22 fill=%22white%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>M</text></svg>">
+
+  <!-- Google Fonts: Plus Jakarta Sans (Modern Display), Outfit (Geometric Tech), Inter (Clean Body), JetBrains Mono (Code/Tech) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="trending-3d-theme">
+
+  <!-- Ambient Iridescent Mesh Background -->
+  <div class="mesh-background" aria-hidden="true">
+    <div class="mesh-orb orb-violet"></div>
+    <div class="mesh-orb orb-cyan"></div>
+    <div class="mesh-orb orb-mint"></div>
+    <div class="mesh-grid"></div>
+  </div>
+
+  <!-- Custom Magnetic Cursor Indicator -->
+  <div class="custom-cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="custom-cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- Floating Glass Header -->
+  <header class="site-header" id="header" role="banner">
+    <div class="header-container container">
+      <a href="#hero" class="brand-logo" aria-label="Mandira Kalinga Dōna Home">
+        <span class="logo-mark">M</span>
+        <div class="logo-text-group">
+          <span class="brand-name">MANDIRA</span>
+          <span class="brand-dona">DŌNA</span>
+        </div>
+        <span class="live-status-dot" title="Open to Opportunities" aria-hidden="true"></span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" role="navigation" aria-label="Main Navigation">
+        <a href="#work" class="nav-link">Work</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#process" class="nav-link">Process</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Nav CTA & Mobile Menu Trigger -->
+      <div class="nav-actions">
+        <a href="#work" class="btn-3d-subtle">
+          <span>Explore Work</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </a>
+
+        <button type="button" class="btn-3d-primary js-open-talk">
+          <span class="btn-glare"></span>
+          <span>Let's Talk</span>
+        </button>
+
+        <button class="mobile-nav-toggle" id="mobileMenuToggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-links">
+      <a href="#hero" class="mobile-drawer-link">Home</a>
+      <a href="#work" class="mobile-drawer-link">Work</a>
+      <a href="#about" class="mobile-drawer-link">About</a>
+      <a href="#skills" class="mobile-drawer-link">Skills</a>
+      <a href="#process" class="mobile-drawer-link">Process</a>
+      <a href="#education" class="mobile-drawer-link">Education</a>
+      <a href="#contact" class="mobile-drawer-link">Contact</a>
+      <button type="button" class="mobile-drawer-link js-open-talk text-accent">
+        Let's Talk ↗
+      </button>
+    </div>
+    <div class="mobile-drawer-footer">
+      <span class="mono-label">DIRECT EMAIL</span>
+      <a href="mailto:mkavindidesilva@gmail.com" class="drawer-email">mkavindidesilva@gmail.com</a>
+    </div>
+  </div>
+
+  <main id="mainContent">
+
+    <!-- ==========================================================================
+         HERO SECTION (3D Web Trending Canvas + Depth Composition)
+         ========================================================================== -->
+    <section class="hero-section" id="hero">
+      <!-- 3D Network Matrix Design Background Canvas (Spans behind Name & Hero) -->
+      <canvas id="heroBg3dCanvas" class="hero-bg-3d-canvas" aria-hidden="true"></canvas>
+
+      <div class="container hero-container">
+        
+        <div class="hero-grid">
+          
+          <!-- Left Column: Typographic & Interactive Details -->
+          <div class="hero-left">
+            <div class="hero-status-pill">
+              <span class="pulse-ring"></span>
+              <span class="pill-text">Junior Software Engineer &amp; Full-Stack Developer</span>
+            </div>
+
+            <div class="hero-title-wrap">
+              <span class="hero-eyebrow">Hi, I'm</span>
+              <h1 class="hero-headline">
+                <span class="name-first">Mandira Kalinga</span>
+                <span class="name-dona-3d">DŌNA</span>
+              </h1>
+            </div>
+
+            <div class="hero-role-pill">
+              <span class="pill-bracket">{</span>
+              <span class="pill-role">SOFTWARE ENGINEER</span>
+              <span class="pill-bracket">}</span>
+              <span class="pill-sep">//</span>
+              <span class="pill-edu">FULL-STACK &amp; DATA SYSTEMS</span>
+            </div>
+
+            <p class="hero-lead">
+              I'm early in my career, and every project is still a chance to learn something new. I build web platforms from the ground up, and I gravitate toward the ones that make me think harder than I expected. See for yourself below.
+            </p>
+
+            <div class="hero-buttons">
+              <a href="#work" class="btn-3d-main">
+                <span>View Selected Projects</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </a>
+
+              <button type="button" class="btn-3d-glass js-open-talk">
+                <span class="dot-online"></span>
+                <span>Let's Talk</span>
+              </button>
+
+              <button type="button" class="btn-copy-quick" id="quickCopyEmailBtn" title="Copy email address">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>mkavindidesilva@gmail.com</span>
+              </button>
+            </div>
+
+            <!-- Social Links Strip -->
+            <div class="hero-socials">
+              <a href="https://github.com/mandirads" target="_blank" rel="noopener noreferrer" class="social-pill">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span>github.com/mandirads</span>
+              </a>
+              <a href="https://www.linkedin.com/in/mandiradesilva3/" target="_blank" rel="noopener noreferrer" class="social-pill">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <span>linkedin/mandiradesilva3</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive 3D Web Canvas & Holographic Cards -->
+          <div class="hero-right">
+            <div class="interactive-3d-stage" id="stage3d">
+              <!-- 3D Canvas dynamically rendered by script.js -->
+              <canvas id="hero3dCanvas" class="hero-3d-canvas" aria-label="Interactive 3D Geometric Scene"></canvas>
+              
+              <!-- Hero Featured Portrait Card (Prominent & High-Res) -->
+              <div class="hero-portrait-card tilt-elem" data-depth="0.18">
+                <div class="hero-portrait-frame">
+                  <img src="images/profile_retouched_bw.jpg" alt="Mandira Kalinga Dōna" class="hero-portrait-img">
+                  <div class="hero-portrait-badge">
+                    <span class="dot-online"></span>
+                    <span>Mandira Kalinga Dōna</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Floating Holographic Badge 1: Career Readiness & Opportunity -->
+              <div class="floating-holo-tag holo-top-right tilt-elem" data-depth="0.12">
+                <span class="holo-icon live-dot">●</span>
+                <div class="holo-text">
+                  <span class="holo-title">Open for Opportunities</span>
+                  <span class="holo-sub">Junior Engineer &amp; Graduate Roles</span>
+                </div>
+              </div>
+
+              <!-- Floating Holographic Badge 2: Tech Stack -->
+              <div class="floating-holo-tag holo-bottom-left tilt-elem" data-depth="0.22">
+                <span class="holo-icon">✦</span>
+                <div class="holo-text">
+                  <span class="holo-title">Tech Stack</span>
+                  <span class="holo-sub">Frontend, Backend &amp; Systems</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Hero Bottom Bar -->
+        <div class="hero-bottom-bar">
+          <div class="bottom-metric-badge">
+            <span class="metric-lead">Focus:</span>
+            <span class="metric-value">Web Development &amp; Software Engineering</span>
+          </div>
+
+          <a href="#work" class="scroll-prompt">
+            <span>Explore Projects</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         WORK SECTION (#work - 3D Interactive Tilt Cards)
+         ========================================================================== -->
+    <section class="section section-padding" id="work">
+      <div class="container">
+        
+        <div class="section-head">
+          <div class="tag-label">SELECTED PROJECTS</div>
+          <h2 class="title-display">FEATURED PROJECTS</h2>
+          <p class="subtitle-text">
+            A selection of projects exploring full-stack web platforms, responsive interfaces, and data systems.
+          </p>
+        </div>
+
+        <!-- 3D Category Dock -->
+        <div class="filter-dock-wrap">
+          <div class="filter-dock-3d" role="tablist" aria-label="Filter Projects">
+            <button class="filter-chip is-active" type="button" data-filter="all" role="tab" aria-selected="true">
+              <span>ALL</span>
+              <span class="chip-counter">3</span>
+            </button>
+            <button class="filter-chip" type="button" data-filter="fullstack" role="tab" aria-selected="false">
+              <span>FULL STACK</span>
+              <span class="chip-counter">1</span>
+            </button>
+            <button class="filter-chip" type="button" data-filter="frontend" role="tab" aria-selected="false">
+              <span>FRONTEND &amp; WEB</span>
+              <span class="chip-counter">1</span>
+            </button>
+            <button class="filter-chip" type="button" data-filter="datascience" role="tab" aria-selected="false">
+              <span>DATA &amp; CS</span>
+              <span class="chip-counter">1</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3D Tilt Project Cards Grid -->
+        <div class="projects-3d-grid" id="projectsGrid">
+          
+          <!-- Card 1: Full-Stack -->
+          <article class="card-3d-tilt" data-category="fullstack">
+            <div class="card-glare" aria-hidden="true"></div>
+            <div class="card-glass-body">
+              <div class="card-head-bar">
+                <span class="index-badge">FULL-STACK</span>
+                <span class="status-pill-amber">In Progress</span>
+              </div>
+
+              <h3 class="card-project-title">Full-Stack Web Application</h3>
+              <p class="card-project-desc">
+                A modular web application featuring a responsive frontend, RESTful API controllers, and relational database data modeling.
+              </p>
+
+              <div class="card-bullets">
+                <div class="bullet-row">
+                  <span class="bullet-arrow">›</span>
+                  <span>Responsive user interface with clean component hierarchy and state management.</span>
+                </div>
+                <div class="bullet-row">
+                  <span class="bullet-arrow">›</span>
+                  <span>Structured REST API endpoints with input validation and error handling.</span>
+                </div>
+              </div>
+
+              <div class="card-tech-chips">
+                <span class="tech-chip">JavaScript</span>
+                <span class="tech-chip">React</span>
+                <span class="tech-chip">Node.js</span>
+                <span class="tech-chip">PostgreSQL</span>
+              </div>
+
+              <div class="card-foot-actions">
+                <a href="https://github.com/mandirads" target="_blank" rel="noopener noreferrer" class="link-action">
+                  <span>GitHub Repository</span>
+                </a>
+                <a href="https://github.com/mandirads" target="_blank" rel="noopener noreferrer" class="btn-chip-demo">
+                  <span>Demo (Coming Soon)</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Interactive Frontend -->
+          <article class="card-3d-tilt" data-category="frontend">
+            <div class="card-glare" aria-hidden="true"></div>
+            <div class="card-glass-body">
+              <div class="card-head-bar">
+                <span class="index-badge">FRONTEND</span>
+                <span class="status-pill-amber">In Progress</span>
+              </div>
+
+              <h3 class="card-project-title">Interactive Web Platform</h3>
+              <p class="card-project-desc">
+                A responsive client application focused on smooth interactive elements, state transitions, and external API integration.
+              </p>
+
+              <div class="card-bullets">
+                <div class="bullet-row">
+                  <span class="bullet-arrow">›</span>
+                  <span>Asynchronous data fetching with dynamic UI updates and loading states.</span>
+                </div>
+                <div class="bullet-row">
+                  <span class="bullet-arrow">›</span>
+                  <span>Optimized client-side rendering for fast load times and clean responsiveness.</span>
+                </div>
+              </div>
+
+              <div class="card-tech-chips">
+                <span class="tech-chip">HTML5</span>
+                <span class="tech-chip">CSS3 / Flexbox</span>
+                <span class="tech-chip">JavaScript (ES6+)</span>
+                <span class="tech-chip">UI/UX</span>
+              </div>
+
+              <div class="card-foot-actions">
+                <a href="https://github.com/mandirads" target="_blank" rel="noopener noreferrer" class="link-action">
+                  <span>GitHub Repository</span>
+                </a>
+                <a href="https://github.com/mandirads" target="_blank" rel="noopener noreferrer" class="btn-chip-demo">
+                  <span>Demo (Coming Soon)</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Data Science Engine -->
+          <article class="card-3d-tilt" data-category="datascience">
+            <div class="card-glare" aria-hidden="true"></div>
+            <div class="card-glass-body">
+              <div class="card-head-bar">
+                <span class="index-badge">DATA &amp; ALGORITHMS</span>
+                <span class="status-pill-amber">In Progress</span>
+              </div>
+
+              <h3 class="card-project-title">Data Analytics &amp; Algorithms</h3>
+              <p class="card-project-desc">
+                Data exploration pipelines and algorithmic problem solving using Python, Pandas, and structured SQL.
+              </p>
+
+              <div class="card-bullets">
+                <div class="bullet-row">
+                  <span class="bullet-arrow">›</span>
+                  <span>Automated data cleaning, statistical evaluation, and visual summaries.</span>
+                </div>
+                <div class="bullet-row">
+                  <span class="bullet-arrow">›</span>
+                  <span>Evaluated core data structures and search algorithms for computational efficiency.</span>
+                </div>
+              </div>
+
+              <div class="card-tech-chips">
+                <span class="tech-chip">Python</span>
+                <span class="tech-chip">Pandas / NumPy</span>
+                <span class="tech-chip">SQL</span>
+                <span class="tech-chip">Algorithms</span>
+              </div>
+
+              <div class="card-foot-actions">
+                <a href="https://github.com/mandirads" target="_blank" rel="noopener noreferrer" class="link-action">
+                  <span>GitHub Repository</span>
+                </a>
+                <a href="https://github.com/mandirads" target="_blank" rel="noopener noreferrer" class="btn-chip-demo">
+                  <span>Demo (Coming Soon)</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Customizer Callout -->
+        <div class="glass-callout-strip">
+          <span class="callout-glyph">✦</span>
+          <p class="callout-msg">
+            More project code and technical experiments are available on my <a href="https://github.com/mandirads" target="_blank" rel="noopener noreferrer" style="color:var(--accent-indigo);font-weight:600;text-decoration:underline;">GitHub profile</a>.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ABOUT SECTION (#about)
+         ========================================================================== -->
+    <section class="section section-padding" id="about">
+      <div class="container">
+        
+        <div class="section-head">
+          <div class="tag-label">ABOUT ME</div>
+          <h2 class="title-display">BACKGROUND &amp; FOCUS</h2>
+          <p class="subtitle-text">
+            Computer Science graduate reading for an MSc in Data Science at the University of the West of England (UWE Bristol).
+          </p>
+        </div>
+
+        <div class="about-3d-layout">
+          <!-- Portrait Card -->
+          <div class="glass-panel-card about-portrait-card">
+            <div class="portrait-img-wrap">
+              <img src="images/profile_retouched_bw.jpg" alt="Mandira Kalinga Dōna" class="portrait-img">
+              <div class="portrait-status-badge">
+                <span class="dot-online"></span>
+                <span>Open for Opportunities</span>
+              </div>
+            </div>
+            <div class="portrait-meta">
+              <h3 class="portrait-name">Mandira Kalinga Dōna</h3>
+              <p class="portrait-title">Junior Software Engineer</p>
+              <div class="portrait-tags">
+                <span class="ptag">BSc (Hons) 2:1 CS</span>
+                <span class="ptag">MSc Data Science</span>
+              </div>
+              <div class="portrait-location">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>Bristol, UK • Open to Relocate</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Narrative Glass Card -->
+          <div class="glass-panel-card">
+            <h3 class="panel-heading">Background &amp; Goals</h3>
+            <p>
+              I graduated with a <strong>BSc (Hons) in Computer Science (2:1 Honours)</strong> from the <strong>University of the West of England (UWE Bristol)</strong>, and I am currently reading for an <strong>MSc in Data Science at UWE Bristol</strong>.
+            </p>
+            <p>
+              I enjoy building web platforms and working with data. Whether crafting a responsive interface or structuring an API, I focus on writing clear, maintainable code and understanding how things work under the hood.
+            </p>
+            <p>
+              I am actively looking for graduate and junior software engineering roles where I can learn from experienced engineers, contribute to real-world products, and continue growing as a developer.
+            </p>
+
+            <div class="metrics-trio">
+              <div class="metric-box">
+                <span class="metric-num">2:1</span>
+                <span class="metric-sub">BSc (Hons) CS</span>
+              </div>
+              <div class="metric-box">
+                <span class="metric-num">MSc</span>
+                <span class="metric-sub">Data Science (In Progress)</span>
+              </div>
+              <div class="metric-box">
+                <span class="metric-num">Bristol, UK</span>
+                <span class="metric-sub">Open to Relocate</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillars Card -->
+          <div class="glass-panel-card">
+            <h3 class="panel-heading">Areas of Focus</h3>
+            <div class="pillars-container">
+              <div class="pillar-block">
+                <span class="pillar-icon">✦</span>
+                <div>
+                  <h4>Web &amp; Full-Stack Development</h4>
+                  <p>Building responsive, accessible web interfaces and connected backend services using JavaScript, React, and Node.js.</p>
+                </div>
+              </div>
+              <div class="pillar-block">
+                <span class="pillar-icon">✦</span>
+                <div>
+                  <h4>Data Science &amp; Analytics</h4>
+                  <p>Developing data pipelines, applying machine learning algorithms, and modeling data using Python &amp; SQL.</p>
+                </div>
+              </div>
+              <div class="pillar-block">
+                <span class="pillar-icon">✦</span>
+                <div>
+                  <h4>Computer Science Foundations</h4>
+                  <p>Applying core data structures, algorithm design, and clean modular architecture.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SKILLS SECTION (#skills)
+         ========================================================================== -->
+    <section class="section section-padding" id="skills">
+      <div class="container">
+        
+        <div class="section-head">
+          <div class="tag-label">SKILLS &amp; TECHNOLOGIES</div>
+          <h2 class="title-display">TECHNICAL SKILLS</h2>
+          <p class="subtitle-text">
+            Technologies, programming languages, and analytical tools I work with.
+          </p>
+        </div>
+
+        <div class="skills-3d-grid">
+          
+          <div class="skill-3d-card">
+            <div class="skill-card-top">
+              <span class="skill-icon">✦</span>
+              <h3 class="skill-group-title">Languages</h3>
+            </div>
+            <div class="skill-pills-wrap">
+              <span class="pill-tech">Python</span>
+              <span class="pill-tech">JavaScript (ES6+)</span>
+              <span class="pill-tech">TypeScript</span>
+              <span class="pill-tech">Java</span>
+              <span class="pill-tech">SQL</span>
+              <span class="pill-tech">HTML5 / CSS3</span>
+            </div>
+          </div>
+
+          <div class="skill-3d-card">
+            <div class="skill-card-top">
+              <span class="skill-icon">✦</span>
+              <h3 class="skill-group-title">Data Science &amp; AI</h3>
+            </div>
+            <div class="skill-pills-wrap">
+              <span class="pill-tech">Machine Learning</span>
+              <span class="pill-tech">Pandas / NumPy</span>
+              <span class="pill-tech">Data Visualisation</span>
+              <span class="pill-tech">Statistical Modeling</span>
+              <span class="pill-tech">Data Pipelines</span>
+              <span class="pill-tech">Data Management</span>
+            </div>
+          </div>
+
+          <div class="skill-3d-card">
+            <div class="skill-card-top">
+              <span class="skill-icon">✦</span>
+              <h3 class="skill-group-title">Frontend &amp; UI</h3>
+            </div>
+            <div class="skill-pills-wrap">
+              <span class="pill-tech">React</span>
+              <span class="pill-tech">Responsive Design</span>
+              <span class="pill-tech">DOM APIs</span>
+              <span class="pill-tech">Tailwind CSS</span>
+              <span class="pill-tech">CSS Grid / Flexbox</span>
+              <span class="pill-tech">Accessibility (a11y)</span>
+            </div>
+          </div>
+
+          <div class="skill-3d-card">
+            <div class="skill-card-top">
+              <span class="skill-icon">✦</span>
+              <h3 class="skill-group-title">Backend &amp; Tools</h3>
+            </div>
+            <div class="skill-pills-wrap">
+              <span class="pill-tech">Node.js</span>
+              <span class="pill-tech">Express.js</span>
+              <span class="pill-tech">RESTful APIs</span>
+              <span class="pill-tech">PostgreSQL / MySQL</span>
+              <span class="pill-tech">Git &amp; GitHub</span>
+              <span class="pill-tech">VS Code / Postman</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         PROCESS SECTION (#process)
+         ========================================================================== -->
+    <section class="section section-padding" id="process">
+      <div class="container">
+        
+        <div class="section-head">
+          <div class="tag-label">HOW I WORK</div>
+          <h2 class="title-display">ENGINEERING APPROACH</h2>
+          <p class="subtitle-text">
+            A simple, structured approach from planning through to delivery.
+          </p>
+        </div>
+
+        <div class="process-3d-grid">
+          
+          <div class="process-card">
+            <div class="process-phase">PLANNING</div>
+            <h3 class="process-name">Planning &amp; Architecture</h3>
+            <p class="process-body">
+              Map system schemas, component relationships, and user flows before writing the first line of code.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-phase">DEVELOPMENT</div>
+            <h3 class="process-name">Clean Implementation</h3>
+            <p class="process-body">
+              Build reusable, accessible UI elements and resilient backend REST endpoints with robust validation.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-phase">TESTING</div>
+            <h3 class="process-name">Validation &amp; Testing</h3>
+            <p class="process-body">
+              Verify cross-device responsiveness, accessibility standards, and test edge cases to ensure stability.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-phase">DEPLOYMENT</div>
+            <h3 class="process-name">Deployment &amp; Iteration</h3>
+            <p class="process-body">
+              Deploy with version control, verify live behavior, and iterate based on feedback and real use.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         EDUCATION SECTION (#education)
+         ========================================================================== -->
+    <section class="section section-padding" id="education">
+      <div class="container">
+        
+        <div class="section-head">
+          <div class="tag-label">EDUCATION</div>
+          <h2 class="title-display">EDUCATION &amp; QUALIFICATIONS</h2>
+          <p class="subtitle-text">
+            Degrees from the University of the West of England (UWE Bristol).
+          </p>
+        </div>
+
+        <div class="education-dual-stack">
+          
+          <!-- Master's Degree (Current) -->
+          <div class="edu-card-glass highlighted-card">
+            <div class="edu-card-header">
+              <div>
+                <span class="edu-badge-level">Postgraduate Degree</span>
+                <h3 class="edu-course-title">Master of Science (MSc) in Data Science</h3>
+                <h4 class="edu-uni-name">University of the West of England (UWE Bristol)</h4>
+              </div>
+              <span class="edu-status-pill in-prog">In Progress</span>
+            </div>
+
+            <p class="edu-summary-text">
+              Postgraduate study covering machine learning, data mining, statistical analysis, distributed big data architectures, and practical AI applications.
+            </p>
+
+            <div class="edu-modules-area">
+              <span class="modules-caption">CORE MODULES:</span>
+              <div class="module-tags-flex">
+                <span class="tag-module">Machine Learning</span>
+                <span class="tag-module">Statistical Data Analysis</span>
+                <span class="tag-module">Big Data Analytics</span>
+                <span class="tag-module">Applied Artificial Intelligence</span>
+                <span class="tag-module">Data Management &amp; Ethics</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bachelor's Degree (Completed with Honours) -->
+          <div class="edu-card-glass">
+            <div class="edu-card-header">
+              <div>
+                <span class="edu-badge-level">Undergraduate Degree</span>
+                <h3 class="edu-course-title">BSc (Hons) in Computer Science</h3>
+                <h4 class="edu-uni-name">University of the West of England (UWE Bristol)</h4>
+              </div>
+              <span class="edu-status-pill grad-21">Second Class Honours (Upper Division) — 2:1 Honours</span>
+            </div>
+
+            <p class="edu-summary-text">
+              Comprehensive undergraduate curriculum covering computing fundamentals, software engineering methodologies, relational databases, computer architecture, and algorithm analysis.
+            </p>
+
+            <div class="edu-modules-area">
+              <span class="modules-caption">KEY MODULES:</span>
+              <div class="module-tags-flex">
+                <span class="tag-module">Data Structures &amp; Algorithms</span>
+                <span class="tag-module">Software Engineering Practice</span>
+                <span class="tag-module">Database Design &amp; Implementation</span>
+                <span class="tag-module">Web Development &amp; APIs</span>
+                <span class="tag-module">Computer Systems &amp; Architecture</span>
+                <span class="tag-module">Object-Oriented Design</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CONTACT SECTION (#contact - Holographic Callout)
+         ========================================================================== -->
+    <section class="section section-padding" id="contact">
+      <div class="container">
+        
+        <div class="contact-hologram-card">
+          <div class="tag-label">CONTACT</div>
+          <h2 class="contact-hero-title">LET'S CONNECT</h2>
+          <p class="contact-hero-desc">
+            I'm actively seeking junior software engineer and graduate developer roles. Feel free to get in touch or connect on LinkedIn.
+          </p>
+
+          <div class="contact-cta-buttons">
+            <button type="button" class="btn-3d-main btn-lg js-open-talk">
+              <span class="dot-online"></span>
+              <span>Send a Message</span>
+            </button>
+            <a href="mailto:mkavindidesilva@gmail.com" class="btn-3d-glass btn-lg" id="copyEmailContactBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <span>mkavindidesilva@gmail.com</span>
+            </a>
+          </div>
+
+          <div class="contact-network-strip">
+            <a href="https://github.com/mandirads" target="_blank" rel="noopener noreferrer" class="network-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>github.com/mandirads</span>
+            </a>
+            <span class="network-sep">•</span>
+            <a href="https://www.linkedin.com/in/mandiradesilva3/" target="_blank" rel="noopener noreferrer" class="network-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <span>linkedin.com/in/mandiradesilva3</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-left">
+        <span class="footer-logo">MANDIRA KALINGA DŌNA</span>
+        <span class="footer-sub">MSc Data Science Candidate • BSc (Hons) Computer Science (2:1) • UWE Bristol</span>
+      </div>
+      <div class="footer-center">
+        <p>&copy; <span id="currentYear"></span> Mandira Kalinga Dōna. All rights reserved.</p>
+      </div>
+      <div class="footer-right">
+        <a href="#hero" class="btn-top-jump">
+          <span>TOP</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- "LET'S TALK" MODAL DIALOG -->
+  <div class="talk-modal-overlay" id="talkModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="talk-modal-card">
+      <div class="modal-header">
+        <div>
+          <span class="modal-tag">DIRECT COMMUNICATION</span>
+          <h3 class="modal-title" id="modalTitle">Let's talk about an opportunity</h3>
+        </div>
+        <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Close dialog">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-quick-email">
+          <div class="quick-email-details">
+            <span class="quick-label">DIRECT EMAIL</span>
+            <span class="quick-val">mkavindidesilva@gmail.com</span>
+          </div>
+          <button type="button" class="btn-copy-modal" id="modalCopyEmailBtn">
+            <span>Copy</span>
+          </button>
+        </div>
+
+        <form id="modalContactForm" class="modal-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="mName">Your Name</label>
+              <input type="text" id="mName" required placeholder="Alex Morgan">
+            </div>
+            <div class="form-group">
+              <label for="mEmail">Your Email</label>
+              <input type="email" id="mEmail" required placeholder="alex@company.com">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="mSubject">Subject / Role</label>
+            <input type="text" id="mSubject" required placeholder="Junior Software Engineer Opportunity">
+          </div>
+          <div class="form-group">
+            <label for="mMessage">Message</label>
+            <textarea id="mMessage" rows="3" required placeholder="Hi Mandira, we saw your portfolio and would love to discuss an opportunity..."></textarea>
+          </div>
+          <button type="submit" class="btn-modal-submit">
+            <span>Send Message via Email Client</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Alert -->
+  <div id="toastNotification" class="toast-card" role="status" aria-live="polite">
+    <span class="toast-check">✓</span>
+    <span class="toast-text" id="toastMessage">Copied to clipboard!</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
